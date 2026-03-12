@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://rn5nmdnyxyo1"]
+
+[ext_resource type="Texture2D" uid="uid://7k4lxkxrlsgb" path="res://Textures/Floor/Floor-basic.png" id="1_62w18"]
+[ext_resource type="PackedScene" uid="uid://bj2rrvln2gcs2" path="res://Player/player.tscn" id="2_8a836"]
+
+[node name="World" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+position = Vector2(-1.5, 0)
+scale = Vector2(0.992424, 1)
+texture = ExtResource("1_62w18")
+region_enabled = true
+region_rect = Rect2(-4000, -4000, 4000, 4000)
+
+[node name="Player" parent="." instance=ExtResource("2_8a836")]

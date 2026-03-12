@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj2rrvln2gcs2"]
+
+[ext_resource type="Script" uid="uid://b0eudjpkvr7tm" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://brjert6jiick8" path="res://Textures/Player/MainChar-Pietje.png" id="1_l8h54"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
+radius = 24.0
+height = 102.0
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_4ntmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_l8h54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 2)
+shape = SubResource("CapsuleShape2D_4ntmi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
