@@ -1,22 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj2rrvln2gcs2"]
+[gd_scene load_steps=11 format=3 uid="uid://bj2rrvln2gcs2"]
 
 [ext_resource type="Script" uid="uid://b0eudjpkvr7tm" path="res://Player/player.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://brjert6jiick8" path="res://Textures/Player/MainChar-Pietje.png" id="1_l8h54"]
+[ext_resource type="Texture2D" uid="uid://gjrbmyc257bc" path="res://Textures/Player/RunAnimation/MainChar-Pietje_Run1.png" id="2_od3ui"]
+[ext_resource type="Texture2D" uid="uid://cep7862dc45tk" path="res://Textures/Player/RunAnimation/MainChar-Pietje_Run2.png" id="3_00tjw"]
+[ext_resource type="Texture2D" uid="uid://dfhky864gsdph" path="res://Textures/Player/RunAnimation/MainChar-Pietje_Run3.png" id="4_x3vf3"]
+[ext_resource type="Texture2D" uid="uid://cy3v03hblv145" path="res://Textures/Player/RunAnimation/MainChar-Pietje_Run4.png" id="5_apopc"]
+[ext_resource type="Texture2D" uid="uid://bxl1catiharrg" path="res://Textures/Player/IdelAnimation/MainChar-Pietje-idel1.png" id="6_5htga"]
+[ext_resource type="Texture2D" uid="uid://7mfg6uo5w4n" path="res://Textures/Player/IdelAnimation/MainChar-Pietje-idel2.png" id="7_p5o4e"]
+[ext_resource type="Texture2D" uid="uid://cthtf3k03asf0" path="res://Textures/Player/IdelAnimation/MainChar-Pietje-idel3.png" id="8_gu6f8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
 radius = 24.0
 height = 102.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_dkpta"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_od3ui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_00tjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x3vf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_apopc")
+}],
+"loop": true,
+"name": &"Running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_5htga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p5o4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gu6f8")
+}],
+"loop": true,
+"name": &"idel",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_4ntmi")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("1_l8h54")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 2)
+position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_4ntmi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, -1)
+sprite_frames = SubResource("SpriteFrames_dkpta")
+animation = &"idel"
+frame_progress = 0.268845
