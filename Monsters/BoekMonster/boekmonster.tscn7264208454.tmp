@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cn6jquybx1lo8"]
+
+[ext_resource type="Texture2D" uid="uid://w4bkfj35hhty" path="res://Textures/Monsters/Boekmonster/BoekMonster1.png" id="1_fh0vu"]
+[ext_resource type="Texture2D" uid="uid://dbygf5hrog1i0" path="res://Textures/Monsters/Boekmonster/BoekMonster2.png" id="2_3mpk4"]
+[ext_resource type="Texture2D" uid="uid://mu4tltpal8br" path="res://Textures/Monsters/Boekmonster/BoekMonster3.png" id="3_xa5sa"]
+
+[sub_resource type="GDScript" id="GDScript_fh0vu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u5c8y"]
+radius = 16.0312
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ryd0c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fh0vu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3mpk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xa5sa")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 5.0
+}]
+
+[node name="Boekmonster" type="CharacterBody2D"]
+motion_mode = 1
+script = SubResource("GDScript_fh0vu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u5c8y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-9.53674e-07, -9.53674e-07)
+scale = Vector2(0.725, 0.725)
+sprite_frames = SubResource("SpriteFrames_ryd0c")
+animation = &"Moving"
+frame_progress = 0.714776

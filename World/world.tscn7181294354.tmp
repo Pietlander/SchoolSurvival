@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://rn5nmdnyxyo1"]
+
+[ext_resource type="Texture2D" uid="uid://biqdd3qvon4fj" path="res://Textures/Floor/Floor1.png" id="1_3f78f"]
+[ext_resource type="Script" uid="uid://p4j535xsb252" path="res://World/tile_map_layer.gd" id="1_8a836"]
+[ext_resource type="PackedScene" uid="uid://bj2rrvln2gcs2" path="res://Player/player.tscn" id="2_8a836"]
+[ext_resource type="Texture2D" uid="uid://bdh2dxhxc3h05" path="res://Textures/Walls/Wall.png" id="2_j8job"]
+[ext_resource type="Texture2D" uid="uid://bodn5n0evswb0" path="res://Textures/Floor/Floor2.png" id="2_k8do8"]
+[ext_resource type="Texture2D" uid="uid://cs75exnhpvefs" path="res://Textures/Floor/Floor3.png" id="3_bkhv4"]
+[ext_resource type="Texture2D" uid="uid://cehxwxl2bptyf" path="res://Textures/Floor/FloorBaset.png" id="4_bkhv4"]
+[ext_resource type="PackedScene" uid="uid://cn6jquybx1lo8" path="res://Monsters/BoekMonster/boekmonster.tscn" id="8_eidgh"]
+[ext_resource type="Script" uid="uid://b3fe6vl7t8k5i" path="res://World/EnemySpawner.gd" id="9_oe8m4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oe8m4"]
+texture = ExtResource("2_j8job")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20, -20, -20, -20, -20)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j8job"]
+texture = ExtResource("4_bkhv4")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+0:0/0/terrains_peering_bit/top_left_corner = 0
+0:0/0/terrains_peering_bit/top_side = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bkhv4"]
+texture = ExtResource("1_3f78f")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+0:0/0/terrains_peering_bit/top_left_corner = 0
+0:0/0/terrains_peering_bit/top_side = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yf0ba"]
+texture = ExtResource("2_k8do8")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+0:0/0/terrains_peering_bit/top_left_corner = 0
+0:0/0/terrains_peering_bit/top_side = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eidgh"]
+texture = ExtResource("3_bkhv4")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+0:0/0/terrains_peering_bit/top_left_corner = 0
+0:0/0/terrains_peering_bit/top_side = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_k8do8"]
+tile_size = Vector2i(40, 40)
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Tiles"
+terrain_set_0/terrain_0/color = Color(0.885349, 0.104701, 0.531072, 1)
+sources/3 = SubResource("TileSetAtlasSource_j8job")
+sources/4 = SubResource("TileSetAtlasSource_bkhv4")
+sources/5 = SubResource("TileSetAtlasSource_yf0ba")
+sources/6 = SubResource("TileSetAtlasSource_eidgh")
+sources/1 = SubResource("TileSetAtlasSource_oe8m4")
+
+[node name="World" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_set = SubResource("TileSet_k8do8")
+script = ExtResource("1_8a836")
+
+[node name="Player" parent="." instance=ExtResource("2_8a836")]
+
+[node name="Boekmonster" parent="." instance=ExtResource("8_eidgh")]
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource("9_oe8m4")
+
+[node name="WaveTimer" type="Timer" parent="EnemySpawner"]
