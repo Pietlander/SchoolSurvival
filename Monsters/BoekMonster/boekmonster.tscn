@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://cwb0cd0yxolmk"]
+
+[ext_resource type="Script" uid="uid://bc1jd8ncyrq5h" path="res://Monsters/BoekMonster/boekmonster.gd" id="1_3mpk4"]
+[ext_resource type="Texture2D" uid="uid://w4bkfj35hhty" path="res://Textures/Monsters/Boekmonster/BoekMonster1.png" id="1_fh0vu"]
+[ext_resource type="Texture2D" uid="uid://dbygf5hrog1i0" path="res://Textures/Monsters/Boekmonster/BoekMonster2.png" id="2_3mpk4"]
+[ext_resource type="Texture2D" uid="uid://bqlglrocvlav7" path="res://Textures/Monsters/Boekmonster/Hurt/BoekMonster-HURT1.png" id="2_ryd0c"]
+[ext_resource type="Texture2D" uid="uid://r6ub30ngpxv4" path="res://Textures/Monsters/Boekmonster/Hurt/BoekMonster-HURT2.png" id="3_0g3m3"]
+[ext_resource type="Texture2D" uid="uid://mu4tltpal8br" path="res://Textures/Monsters/Boekmonster/BoekMonster3.png" id="3_xa5sa"]
+[ext_resource type="Texture2D" uid="uid://cpmccqou0tl67" path="res://Textures/Monsters/Boekmonster/Hurt/BoekMonster-HURT3.png" id="4_fveva"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fh0vu"]
+radius = 30.0666
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3mpk4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ryd0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0g3m3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fveva")
+}],
+"loop": true,
+"name": &"Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fh0vu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3mpk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xa5sa")
+}],
+"loop": true,
+"name": &"Idel",
+"speed": 5.0
+}]
+
+[node name="Boekmonster" type="CharacterBody2D" groups=["Monster"]]
+script = ExtResource("1_3mpk4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fh0vu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, 0.999999)
+scale = Vector2(1.4625, 1.4625)
+sprite_frames = SubResource("SpriteFrames_3mpk4")
+animation = &"Hurt"
+frame_progress = 0.550651
