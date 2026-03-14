@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxl1catiharrg"
-path="res://.godot/imported/MainChar-Pietje-idel1.png-178e78910a12b213a97fd4c1f225f56e.ctex"
+uid="uid://cs75exnhpvefs"
+path="res://.godot/imported/Floor3.png-967b5849df7cb1aaa843c74fe55bbc3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Player/IdelAnimation/MainChar-Pietje-idel1.png"
-dest_files=["res://.godot/imported/MainChar-Pietje-idel1.png-178e78910a12b213a97fd4c1f225f56e.ctex"]
+source_file="res://Textures/Floor/Floor3.png"
+dest_files=["res://.godot/imported/Floor3.png-967b5849df7cb1aaa843c74fe55bbc3e.ctex"]
 
 [params]
 

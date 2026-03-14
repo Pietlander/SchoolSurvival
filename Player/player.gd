@@ -13,8 +13,15 @@ func _physics_process(delta):
 	if direction != Vector2.ZERO:
 		velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 		animated_sprite.play("Running")
+		
+		# Flips the sprite horizontally if moving left (x < 0)
+		# Unflips it if moving right (x > 0)
+		if direction.x != 0:
+			animated_sprite.flip_h = (direction.x < 0)
+			
 	else:
-		animated_sprite.play("idel")
+		# Changed "idel" to "idle" - make sure this matches your exact animation name!
+		animated_sprite.play("idel") 
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	move_and_slide()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7k4lxkxrlsgb"
-path="res://.godot/imported/Floor-basic.png-b58497b925a7648f0955f87ed7b3b9d7.ctex"
+uid="uid://bko7lm7f2q2v5"
+path="res://.godot/imported/PietjeMainPlayer-Running11.png-ee32d4e1f7807757d073afadf64ae18e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Floor/Floor-basic.png"
-dest_files=["res://.godot/imported/Floor-basic.png-b58497b925a7648f0955f87ed7b3b9d7.ctex"]
+source_file="res://Textures/Player/RunAnimation/PietjeMainPlayer-Running11.png"
+dest_files=["res://.godot/imported/PietjeMainPlayer-Running11.png-ee32d4e1f7807757d073afadf64ae18e.ctex"]
 
 [params]
 

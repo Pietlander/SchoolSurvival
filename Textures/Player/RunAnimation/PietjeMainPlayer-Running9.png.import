@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy3v03hblv145"
-path="res://.godot/imported/MainChar-Pietje_Run4.png-69c645e468094456c09bf2288f615d7a.ctex"
+uid="uid://c7tx41t6obf31"
+path="res://.godot/imported/PietjeMainPlayer-Running9.png-2e82b76f08606b525c8bdae9e92456f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Player/RunAnimation/MainChar-Pietje_Run4.png"
-dest_files=["res://.godot/imported/MainChar-Pietje_Run4.png-69c645e468094456c09bf2288f615d7a.ctex"]
+source_file="res://Textures/Player/RunAnimation/PietjeMainPlayer-Running9.png"
+dest_files=["res://.godot/imported/PietjeMainPlayer-Running9.png-2e82b76f08606b525c8bdae9e92456f1.ctex"]
 
 [params]
 
