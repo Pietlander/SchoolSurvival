@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://rn5nmdnyxyo1"]
+[gd_scene load_steps=20 format=3 uid="uid://rn5nmdnyxyo1"]
 
 [ext_resource type="Texture2D" uid="uid://biqdd3qvon4fj" path="res://Textures/Floor/Floor1.png" id="1_3f78f"]
 [ext_resource type="Script" uid="uid://p4j535xsb252" path="res://World/tile_map_layer.gd" id="1_8a836"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cehxwxl2bptyf" path="res://Textures/Floor/FloorBaset.png" id="4_bkhv4"]
 [ext_resource type="Script" uid="uid://dpcjucq7v4tkd" path="res://World/ui.gd" id="7_lo5ox"]
 [ext_resource type="PackedScene" uid="uid://cwb0cd0yxolmk" path="res://Monsters/BoekMonster/boekmonster.tscn" id="8_eidgh"]
+[ext_resource type="Texture2D" uid="uid://cto6nh016tsdj" path="res://Textures/UI/HP-BAR.png" id="8_h2aik"]
 [ext_resource type="Script" uid="uid://cjslxdxfxxq45" path="res://World/EnemySpawner.gd" id="9_oe8m4"]
 [ext_resource type="PackedScene" uid="uid://b3drwmgw3uf06" path="res://Wapens/bullet.tscn" id="10_w47uh"]
 
@@ -116,6 +117,13 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_w47uh")
 max_value = 5.0
 value = 5.0
 show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="UI"]
+texture_filter = 1
+position = Vector2(-28.3855, 181.422)
+rotation = 1.5708
+scale = Vector2(0.455839, 0.845783)
+texture = ExtResource("8_h2aik")
 
 [node name="Player" parent="." instance=ExtResource("2_8a836")]
 position = Vector2(0, 1)
