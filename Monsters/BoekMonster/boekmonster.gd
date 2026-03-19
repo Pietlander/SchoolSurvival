@@ -22,7 +22,6 @@ func _physics_process(delta):
 		
 		if distance > stop_distance:
 			# Chasing the player
-
 			var direction = global_position.direction_to(player.global_position)
 			velocity = direction * speed
 			animated_sprite.play("Idel") 
