@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cpmccqou0tl67" path="res://Textures/Monsters/Boekmonster/Hurt/BoekMonster-HURT3.png" id="4_fveva"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fh0vu"]
-radius = 30.0666
+radius = 33.541
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3mpk4"]
 animations = [{
