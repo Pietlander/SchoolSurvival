@@ -22,6 +22,7 @@ func _physics_process(delta):
 		
 		if distance > stop_distance:
 			# Chasing the player
+
 			var direction = global_position.direction_to(player.global_position)
 			velocity = direction * speed
 			animated_sprite.play("Idel") 
@@ -33,7 +34,7 @@ func _physics_process(delta):
 			if can_attack and player.has_method("take_damage"):
 				player.take_damage(attack_damage)
 				can_attack = false
-				await get_tree().create_timer(1.0).timeout
+				#await get_tree().create_timer(1.0).timeout
 				can_attack = true
 			
 		move_and_slide()
@@ -43,6 +44,7 @@ func take_damage(amount: int):
 	
 	if health <= 0:
 		queue_free()
+		set_physics_process(false)
 	else:
 	
 		is_hurt = true
