@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 # --- SIGNALEN ---
 signal health_changed(new_health)
-signal xp_changed(current_xp, max_xp) # Nieuw!
-signal level_changed(new_level)       # Nieuw! (veranderd van level_up naar level_changed)
+signal xp_changed(current_xp, max_xp) 
+signal level_changed(new_level) 
 
 const MAX_SPEED = 400.0
 const ACCELERATION = 600.0
@@ -14,7 +14,7 @@ const FRICTION = 800.0
 @export var bullet_scene: PackedScene 
 
 var can_shoot: bool = true
-var fire_rate: float = 0.5 
+var fire_rate: float = 00.1
 
 var max_health: int = 5
 var current_health: int = 5

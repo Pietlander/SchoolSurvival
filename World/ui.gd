@@ -4,9 +4,9 @@ extends CanvasLayer
 
 # --- UI Nodes ---
 @onready var health_bar = $HealthBar
-@onready var xp_bar = $XPBar          # Voeg deze ProgressBar toe in je scene
-@onready var level_label = $LevelLabel  # Voeg dit Label toe in je scene
-
+@onready var xp_bar = $XPBar         
+@onready var level_label = $LevelLabel  
+@onready var win_screen = $WinScreen 
 func _ready():
 	if player:
 		# --- Health Setup ---
@@ -32,4 +32,14 @@ func update_xp_bar(current_xp: int, max_xp: int):
 	xp_bar.value = current_xp
 
 func update_level_text(new_level: int):
-	level_label.text = "Level: " + str(new_level)
+	level_label.text =  "Level: " + str(new_level)
+	
+	# Check of het level 10 is
+	if new_level == 5:
+		show_victory()
+		
+func show_victory():
+	# Laat het scherm zien
+	win_screen.show()
+	# Zet de hele game op pauze
+	get_tree().paused = true

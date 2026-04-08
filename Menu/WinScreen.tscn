@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvlxf8ledo44x"]
+
+[ext_resource type="Script" uid="uid://cayupfk3s7o8g" path="res://Menu/win_screen.gd" id="1_sjfuh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yetor"]
+font_size = 22
+outline_size = 3
+outline_color = Color(0.71273, 0, 0, 1)
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sjfuh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 245.0
+offset_right = 853.0
+offset_bottom = 276.0
+text = "GEFELICITEERD! JE HEBT SCHOOL OVERLEEFD!"
+label_settings = SubResource("LabelSettings_yetor")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 290.0
+offset_right = 688.0
+offset_bottom = 356.0
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Doorgaan met spelen"
+
+[node name="MenuButton" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Terug naar Menu"
+
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

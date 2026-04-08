@@ -2,7 +2,7 @@ extends Area2D
 
 var speed: float = 800.0
 var direction: Vector2 = Vector2.ZERO
-var damage: int = 1 
+var damage: int = 2 
 
 func _ready():
 	await get_tree().create_timer(2.0).timeout
