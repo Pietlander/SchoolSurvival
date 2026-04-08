@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
+# --- SIGNALEN ---
 signal health_changed(new_health)
+signal xp_changed(current_xp, max_xp) # Nieuw!
+signal level_changed(new_level)       # Nieuw! (veranderd van level_up naar level_changed)
 
 const MAX_SPEED = 400.0
 const ACCELERATION = 600.0
@@ -8,16 +11,30 @@ const FRICTION = 800.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 
-
 @export var bullet_scene: PackedScene 
 
 var can_shoot: bool = true
 var fire_rate: float = 0.5 
 
-
 var max_health: int = 5
 var current_health: int = 5
 var is_invincible: bool = false # GOD MODE 
+
+# --- LVL UP variabelen ---
+var level: int = 1
+var experience: int = 0
+var exp_to_next_level: int = 5
+var damage_multiplier: int = 1
+
+func _ready():
+	# Update de UI zodra de speler inlaadt
+	# Let op: we gebruiken call_deferred om te zorgen dat de UI tijd heeft gehad om te laden
+	call_deferred("emit_initial_signals")
+
+func emit_initial_signals():
+	health_changed.emit(current_health)
+	xp_changed.emit(experience, exp_to_next_level)
+	level_changed.emit(level)
 
 func _physics_process(delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -34,25 +51,55 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
-func shoot():
+# --- XP & LEVEL LOGICA ---
+
+func gain_experience(amount: int):
+	experience += amount
+	print("EXP: ", experience, "/", exp_to_next_level)
 	
+	# Zolang we genoeg XP hebben voor een level up, blijven we levelen 
+	# (handig als je in één klap heel veel XP krijgt)
+	while experience >= exp_to_next_level:
+		experience -= exp_to_next_level # Haal de benodigde XP eraf, behoud de rest!
+		level_up()
+		
+	# Stuur de nieuwe XP stand naar de UI
+	xp_changed.emit(experience, exp_to_next_level)
+
+func level_up():
+	level += 1
+	exp_to_next_level = int(exp_to_next_level * 1.5)
+	damage_multiplier += 1
+	
+	# VERBETERING: Schietsnelheid verhogen (vertraging verlagen)
+	fire_rate = maxf(0.1, fire_rate * 0.9)
+	
+	print("LEVEL UP! Level: ", level, " | Schietsnelheid: ", fire_rate)
+	
+	current_health = max_health
+	
+	# Stuur signalen naar de UI dat we een level omhoog zijn en weer volle HP hebben
+	health_changed.emit(current_health)
+	level_changed.emit(level) 
+
+# --- COMBAT LOGICA ---
+
+func shoot():
 	if not can_shoot:
 		return
 		
-	
 	if not bullet_scene:
 		push_warning("Bullet scene is not assigned to the player!")
 		return
 		
-	
 	can_shoot = false
 		
-
 	var bullet = bullet_scene.instantiate()
+	if bullet.has_method("set_damage"):
+		bullet.set_damage(1 + (level - 1))
 	bullet.global_position = global_position
 	
 	var mouse_pos = get_global_mouse_position()
@@ -60,21 +107,14 @@ func shoot():
 	
 	get_tree().current_scene.add_child.call_deferred(bullet)
 
-	
-	
 	await get_tree().create_timer(fire_rate).timeout
-	
-	
 	can_shoot = true
-	
 
 func take_damage(amount: int):
 	if is_invincible:
 		return
 		
 	current_health -= amount
-	
-	
 	health_changed.emit(current_health)
 	
 	if current_health <= 0:
@@ -86,6 +126,4 @@ func take_damage(amount: int):
 
 func die():
 	print("Player Died! Game Over.")
-	
-	
 	get_tree().call_deferred("reload_current_scene")

@@ -131,6 +131,21 @@ rotation = 1.5708
 scale = Vector2(0.455839, 0.845783)
 texture = ExtResource("8_h2aik")
 
+[node name="XPBar" type="ProgressBar" parent="UI"]
+offset_left = -46.0
+offset_top = 47.0
+offset_right = 155.0
+offset_bottom = 74.0
+rotation = 1.5708
+
+[node name="LevelLabel" type="Label" parent="UI"]
+offset_left = -47.0
+offset_top = 252.0
+offset_right = 120.0
+offset_bottom = 276.0
+rotation = 1.5708
+text = "Level: 1"
+
 [node name="Player" parent="." instance=ExtResource("2_8a836")]
 position = Vector2(0, 1)
 bullet_scene = ExtResource("10_w47uh")
