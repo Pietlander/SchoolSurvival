@@ -2,13 +2,13 @@ extends CharacterBody2D
 
 var speed: float = 100.0
 var player: Node2D
-var stop_distance: float = 80.0
 var health: int = 3
-
 
 var is_hurt: bool = false 
 
 @onready var animated_sprite = $AnimatedSprite2D 
+
+@onready var attack_range = $AttackRange 
 
 var attack_damage: int = 1
 var can_attack: bool = true
@@ -18,14 +18,14 @@ func _physics_process(delta):
 		return 
 		
 	if player:
-		var distance = global_position.distance_to(player.global_position)
+		var is_player_in_range = false
 		
-		if distance > stop_distance:
-			# Chasing the player
-			var direction = global_position.direction_to(player.global_position)
-			velocity = direction * speed
-			animated_sprite.play("Idel") 
-		else:
+		for body in attack_range.get_overlapping_bodies():
+			if body == player:
+				is_player_in_range = true
+				break
+		
+		if is_player_in_range:
 		
 			velocity = Vector2.ZERO
 			animated_sprite.play("Idel") 
@@ -33,9 +33,15 @@ func _physics_process(delta):
 			if can_attack and player.has_method("take_damage"):
 				player.take_damage(attack_damage)
 				can_attack = false
-				#await get_tree().create_timer(1.0).timeout
+				await get_tree().create_timer(1.0).timeout
 				can_attack = true
+		else:
+		
+			var direction = global_position.direction_to(player.global_position)
+			velocity = direction * speed
+			animated_sprite.play("Idel") 
 			
+		
 		move_and_slide()
 
 func take_damage(amount: int):
@@ -45,13 +51,10 @@ func take_damage(amount: int):
 		queue_free()
 		set_physics_process(false)
 	else:
-	
 		is_hurt = true
 		velocity = Vector2.ZERO 
 		animated_sprite.play("Hurt")
 		
-		
 		await get_tree().create_timer(0.1).timeout
 		
-	
 		is_hurt = false

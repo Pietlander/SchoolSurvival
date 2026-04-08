@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwb0cd0yxolmk"]
+[gd_scene load_steps=11 format=3 uid="uid://cwb0cd0yxolmk"]
 
 [ext_resource type="Script" uid="uid://bc1jd8ncyrq5h" path="res://Monsters/BoekMonster/boekmonster.gd" id="1_3mpk4"]
 [ext_resource type="Texture2D" uid="uid://w4bkfj35hhty" path="res://Textures/Monsters/Boekmonster/BoekMonster1.png" id="1_fh0vu"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cpmccqou0tl67" path="res://Textures/Monsters/Boekmonster/Hurt/BoekMonster-HURT3.png" id="4_fveva"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fh0vu"]
-radius = 33.541
+radius = 19.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3mpk4"]
 animations = [{
@@ -42,6 +42,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryd0c"]
+radius = 24.0208
+
 [node name="Boekmonster" type="CharacterBody2D" groups=["Monster"]]
 script = ExtResource("1_3mpk4")
 
@@ -55,3 +58,9 @@ scale = Vector2(1.4625, 1.4625)
 sprite_frames = SubResource("SpriteFrames_3mpk4")
 animation = &"Hurt"
 frame_progress = 0.550651
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_ryd0c")

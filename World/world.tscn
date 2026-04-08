@@ -33,6 +33,7 @@ texture_region_size = Vector2i(40, 40)
 0:0/0/terrains_peering_bit/top_left_corner = 0
 0:0/0/terrains_peering_bit/top_side = 0
 0:0/0/terrains_peering_bit/top_right_corner = 0
+0:0/0/custom_data_0 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bkhv4"]
 texture = ExtResource("1_3f78f")
@@ -48,6 +49,7 @@ texture_region_size = Vector2i(40, 40)
 0:0/0/terrains_peering_bit/top_left_corner = 0
 0:0/0/terrains_peering_bit/top_side = 0
 0:0/0/terrains_peering_bit/top_right_corner = 0
+0:0/0/custom_data_0 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yf0ba"]
 texture = ExtResource("2_k8do8")
@@ -63,6 +65,7 @@ texture_region_size = Vector2i(40, 40)
 0:0/0/terrains_peering_bit/top_left_corner = 0
 0:0/0/terrains_peering_bit/top_side = 0
 0:0/0/terrains_peering_bit/top_right_corner = 0
+0:0/0/custom_data_0 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eidgh"]
 texture = ExtResource("3_bkhv4")
@@ -78,6 +81,7 @@ texture_region_size = Vector2i(40, 40)
 0:0/0/terrains_peering_bit/top_left_corner = 0
 0:0/0/terrains_peering_bit/top_side = 0
 0:0/0/terrains_peering_bit/top_right_corner = 0
+0:0/0/custom_data_0 = true
 
 [sub_resource type="TileSet" id="TileSet_k8do8"]
 tile_size = Vector2i(40, 40)
@@ -85,6 +89,8 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Tiles"
 terrain_set_0/terrain_0/color = Color(0.885349, 0.104701, 0.531072, 1)
+custom_data_layer_0/name = "can_spawn"
+custom_data_layer_0/type = 1
 sources/3 = SubResource("TileSetAtlasSource_j8job")
 sources/4 = SubResource("TileSetAtlasSource_bkhv4")
 sources/5 = SubResource("TileSetAtlasSource_yf0ba")
@@ -129,9 +135,10 @@ texture = ExtResource("8_h2aik")
 position = Vector2(0, 1)
 bullet_scene = ExtResource("10_w47uh")
 
-[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("player", "tilemap_layer")]
 script = ExtResource("9_oe8m4")
 monster_scene = ExtResource("8_eidgh")
 player = NodePath("../Player")
+tilemap_layer = NodePath("../TileMapLayer")
 
 [node name="WaveTimer" type="Timer" parent="EnemySpawner"]
