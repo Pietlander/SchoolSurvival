@@ -12,11 +12,14 @@ var is_hurt: bool = false
 
 var attack_damage: int = 1
 var can_attack: bool = true
-@export var exp_scene: PackedScene # Sleep hier je ExpGem.tscn in!
+var attack_cooldown: float = 1.0
+var current_attack_timer: float = 0.0
+@export var exp_scene: PackedScene
 
+var is_dead: bool = false
 func _physics_process(delta):
-	if is_hurt:
-		return 
+	if is_dead or is_hurt:
+		return
 		
 	if player:
 		var difficulty_speed = speed + (player.level * 15)
@@ -29,15 +32,15 @@ func _physics_process(delta):
 				break
 		
 		if is_player_in_range:
-		
 			velocity = Vector2.ZERO
-			animated_sprite.play("Idel") 
+			animated_sprite.play("Idel")
 			
-			if can_attack and player.has_method("take_damage"):
+			
+			if current_attack_timer <= 0 and player.has_method("take_damage"):
 				player.take_damage(attack_damage)
-				can_attack = false
-				await get_tree().create_timer(1.0).timeout
-				can_attack = true
+				
+				
+				current_attack_timer = attack_cooldown
 		else:
 			# Monster rent achter speler aan
 			var direction = global_position.direction_to(player.global_position)

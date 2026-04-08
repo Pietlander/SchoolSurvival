@@ -126,4 +126,4 @@ func take_damage(amount: int):
 
 func die():
 	print("Player Died! Game Over.")
-	get_tree().call_deferred("reload_current_scene")
+	get_tree().change_scene_to_file("res://Menu/GameOver.tscn")

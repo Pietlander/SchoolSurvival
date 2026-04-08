@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd1cxprvfq25q"]
+
+[ext_resource type="Script" uid="uid://6fbs1i3a4wqr" path="res://Menu/game_over.gd" id="1_cclec"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cclec")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 605.0
+color = Color(0, 0, 0, 0.541176)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 225.0
+offset_right = 639.0
+offset_bottom = 248.0
+text = "JE BENT AF!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 267.0
+offset_right = 753.0
+offset_bottom = 490.0
+
+[node name="Restart" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Probeer opnieuw"
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Naar menu
+"
+
+[connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_menu_button_pressed"]
