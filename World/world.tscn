@@ -146,6 +146,14 @@ offset_bottom = 276.0
 rotation = 1.5708
 text = "Level: 1"
 
+[node name="HPLabel" type="Label" parent="UI"]
+offset_left = -16.0
+offset_top = 323.0
+offset_right = 9.99998
+offset_bottom = 349.0
+rotation = 1.5708
+text = "HP"
+
 [node name="Player" parent="." instance=ExtResource("2_8a836")]
 position = Vector2(0, 1)
 bullet_scene = ExtResource("10_w47uh")
