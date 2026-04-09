@@ -48,7 +48,7 @@ func spawn_monster():
 		# Zet de wereld-positie om naar de coördinaten van het grid
 		var map_position = tilemap_layer.local_to_map(test_position)
 		
-		# VERANDERD: We vragen de data op (zonder laag-nummer, want de node is al de laag!)
+		#vraag de data op (zonder laag-nummer, want de node is al de laag!)
 		var tile_data = tilemap_layer.get_cell_tile_data(map_position)
 		
 		# Check of het vakje bestaat én of onze custom 'can_spawn' sticker op True staat!

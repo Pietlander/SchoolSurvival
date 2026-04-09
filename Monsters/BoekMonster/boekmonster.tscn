@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwb0cd0yxolmk"]
+[gd_scene load_steps=13 format=3 uid="uid://cwb0cd0yxolmk"]
 
 [ext_resource type="Script" uid="uid://bc1jd8ncyrq5h" path="res://Monsters/BoekMonster/boekmonster.gd" id="1_3mpk4"]
 [ext_resource type="Texture2D" uid="uid://w4bkfj35hhty" path="res://Textures/Monsters/Boekmonster/BoekMonster1.png" id="1_fh0vu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://r6ub30ngpxv4" path="res://Textures/Monsters/Boekmonster/Hurt/BoekMonster-HURT2.png" id="3_0g3m3"]
 [ext_resource type="Texture2D" uid="uid://mu4tltpal8br" path="res://Textures/Monsters/Boekmonster/BoekMonster3.png" id="3_xa5sa"]
 [ext_resource type="Texture2D" uid="uid://cpmccqou0tl67" path="res://Textures/Monsters/Boekmonster/Hurt/BoekMonster-HURT3.png" id="4_fveva"]
+[ext_resource type="AudioStream" uid="uid://ci2bw1lhfpyr7" path="res://Audio/geluids-effects/Monsterhurt.mp3" id="9_fveva"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fh0vu"]
 radius = 19.0
@@ -66,3 +67,7 @@ frame_progress = 0.550651
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_ryd0c")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_fveva")
+pitch_scale = 2.5

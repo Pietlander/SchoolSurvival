@@ -20,15 +20,16 @@ var max_health: int = 5
 var current_health: int = 5
 var is_invincible: bool = false # GOD MODE 
 
-# --- LVL UP variabelen ---
+#LVL UP variabelen
 var level: int = 1
 var experience: int = 0
 var exp_to_next_level: int = 5
 var damage_multiplier: int = 1
 
 func _ready():
-	# Update de UI zodra de speler inlaadt
-	# Let op: we gebruiken call_deferred om te zorgen dat de UI tijd heeft gehad om te laden
+
+	MusicManager.play_game_music()
+	
 	call_deferred("emit_initial_signals")
 
 func emit_initial_signals():
@@ -60,13 +61,11 @@ func gain_experience(amount: int):
 	experience += amount
 	print("EXP: ", experience, "/", exp_to_next_level)
 	
-	# Zolang we genoeg XP hebben voor een level up, blijven we levelen 
-	# (handig als je in één klap heel veel XP krijgt)
 	while experience >= exp_to_next_level:
-		experience -= exp_to_next_level # Haal de benodigde XP eraf, behoud de rest!
+		experience -= exp_to_next_level 
 		level_up()
 		
-	# Stuur de nieuwe XP stand naar de UI
+	
 	xp_changed.emit(experience, exp_to_next_level)
 
 func level_up():
@@ -74,19 +73,18 @@ func level_up():
 	exp_to_next_level = int(exp_to_next_level * 1.5)
 	damage_multiplier += 1
 	
-	# VERBETERING: Schietsnelheid verhogen (vertraging verlagen)
+	
 	fire_rate = maxf(0.1, fire_rate * 0.9)
 	
 	print("LEVEL UP! Level: ", level, " | Schietsnelheid: ", fire_rate)
 	
 	current_health = max_health
 	
-	# Stuur signalen naar de UI dat we een level omhoog zijn en weer volle HP hebben
+	
 	health_changed.emit(current_health)
 	level_changed.emit(level) 
 
 # --- COMBAT LOGICA ---
-
 func shoot():
 	if not can_shoot:
 		return
@@ -107,6 +105,8 @@ func shoot():
 	
 	get_tree().current_scene.add_child.call_deferred(bullet)
 
+	$ShootSound.play()
+	
 	await get_tree().create_timer(fire_rate).timeout
 	can_shoot = true
 

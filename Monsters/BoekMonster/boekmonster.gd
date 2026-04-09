@@ -38,11 +38,9 @@ func _physics_process(delta):
 			
 			if current_attack_timer <= 0 and player.has_method("take_damage"):
 				player.take_damage(attack_damage)
-				
-				
 				current_attack_timer = attack_cooldown
 		else:
-			# Monster rent achter speler aan
+			
 			var direction = global_position.direction_to(player.global_position)
 			velocity = direction * difficulty_speed
 			
@@ -52,7 +50,16 @@ func _physics_process(delta):
 		move_and_slide()
 
 func die(): 
-	# Spawn EXP
+
+	set_physics_process(false) 
+	
+	$AnimatedSprite2D.hide() 
+	
+	$CollisionShape2D.set_deferred("disabled", true)
+	
+	$HitSound.play()
+	
+	await $HitSound.finished
 	if exp_scene:
 		var gem = exp_scene.instantiate()
 		gem.global_position = global_position
@@ -62,14 +69,15 @@ func die():
 	
 	queue_free()
 
-# Pas je bestaande take_damage aan:
+
 func take_damage(amount: int):
 	health -= amount 
 	if health <= 0:
-		die() # Roep de nieuwe functie aan
+		die() 
 	else:
 		is_hurt = true
 		velocity = Vector2.ZERO 
+		$HitSound.play()
 		animated_sprite.play("Hurt")
 		
 		await get_tree().create_timer(0.1).timeout

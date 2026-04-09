@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://i1xmk8xti6md"]
+
+[ext_resource type="Script" uid="uid://gvoai17n6ely" path="res://Audio/music_manager.gd" id="1_x478p"]
+[ext_resource type="AudioStream" uid="uid://dhxsrv5u6msep" path="res://Audio/music/Quiet_Before_the_Quest.mp3" id="1_yxf74"]
+[ext_resource type="AudioStream" uid="uid://dnolmnww6xih7" path="res://Audio/music/After_the_Final_Strike.mp3" id="2_x478p"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_x478p")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_yxf74")
+volume_db = -18.263
+parameters/looping = true
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_x478p")
+volume_db = -18.263
+parameters/looping = true

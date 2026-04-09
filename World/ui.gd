@@ -15,7 +15,6 @@ func _ready():
 		player.health_changed.connect(update_health_bar) 
 		
 		# --- XP & Level Setup ---
-		# We koppelen hier de nieuwe signalen van je Speler
 		player.xp_changed.connect(update_xp_bar)
 		player.level_changed.connect(update_level_text)
 		
@@ -34,12 +33,9 @@ func update_xp_bar(current_xp: int, max_xp: int):
 func update_level_text(new_level: int):
 	level_label.text =  "Level: " + str(new_level)
 	
-	# Check of het level 10 is
-	if new_level == 5:
+	if new_level == 10:
 		show_victory()
 		
 func show_victory():
-	# Laat het scherm zien
 	win_screen.show()
-	# Zet de hele game op pauze
 	get_tree().paused = true

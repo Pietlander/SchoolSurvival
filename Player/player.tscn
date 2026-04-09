@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bj2rrvln2gcs2"]
+[gd_scene load_steps=26 format=3 uid="uid://bj2rrvln2gcs2"]
 
 [ext_resource type="Script" uid="uid://b0eudjpkvr7tm" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://c8ix4w5mh5ypt" path="res://Textures/Player/RunAnimation/PietjeMainPlayer-Running1.png" id="2_hshwv"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bo1jbubkhbal" path="res://Textures/Player/IdelAnimation/PietjeMainPlayer-IDEL7.png" id="20_8ynux"]
 [ext_resource type="Texture2D" uid="uid://b5iuxmcamid8h" path="res://Textures/Player/IdelAnimation/PietjeMainPlayer-IDEL8.png" id="21_d30e8"]
 [ext_resource type="Texture2D" uid="uid://dbhvpbo1rve8g" path="res://Textures/Player/IdelAnimation/PietjeMainPlayer-IDEL9.png" id="22_6pogt"]
+[ext_resource type="AudioStream" uid="uid://rpphtmmnoatu" path="res://Audio/geluids-effects/SHIET.mp3" id="23_gpjlu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
 radius = 24.0
@@ -121,3 +122,8 @@ sprite_frames = SubResource("SpriteFrames_dkpta")
 animation = &"Running"
 frame = 11
 frame_progress = 1.0
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_gpjlu")
+volume_db = -21.988
+pitch_scale = 1.72
